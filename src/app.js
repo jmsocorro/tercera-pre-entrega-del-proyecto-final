@@ -15,6 +15,8 @@ import cartsRouter from "./routes/carts.router.js";
 import realTimeProductsRouter from "./routes/realtimeproducts.router.js";
 import chatRouter from "./routes/chat.router.js";
 import userRouter from "./routes/users.router.js";
+import mailerRouter from "./routes/mailer.router.js";
+import smsRouter from "./routes/sms.router.js";
 import __dirname, { passportAuthenticate } from "./utils.js";
 import initializePassport from "./config/passport.config.js";
 import { messageModel } from "./models/messageModel.js";
@@ -47,6 +49,8 @@ app.use("/products", passportAuthenticate("jwt"), productsRouter);
 app.use("/api/carts", passportAuthenticate("jwt"), apiCartsRouter);
 app.use("/carts", passportAuthenticate("jwt"), cartsRouter);
 app.use("/chat", passportAuthenticate("jwt"), chatRouter);
+app.use("/mail", passportAuthenticate("jwt"), mailerRouter);
+app.use("/sms", passportAuthenticate("jwt"), smsRouter);
 app.use(
     "/realtimeproducts",
     passportAuthenticate("jwt"),

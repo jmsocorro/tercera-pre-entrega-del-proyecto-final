@@ -17,7 +17,7 @@ import chatRouter from "./routes/chat.router.js";
 import userRouter from "./routes/users.router.js";
 import __dirname, { passportAuthenticate } from "./utils.js";
 import initializePassport from "./config/passport.config.js";
-import { messageModel } from "./dao/models/messageModel.js";
+import { messageModel } from "./models/messageModel.js";
 
 mongoose.set("strictQuery", false);
 

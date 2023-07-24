@@ -16,4 +16,5 @@ export default {
     JWT_COOKIE: process.env.JWT_COOKIE,
     ADMIN_EMAIL: process.env.ADMIN_MAIL,
     ADMIN_PASSWORD: process.env.ADMIN_PASS,
+    PERSISTANCE: process.env.PERSISTANCE
 };

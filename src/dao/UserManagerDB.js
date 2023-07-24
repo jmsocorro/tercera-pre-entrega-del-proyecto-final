@@ -1,7 +1,11 @@
-import { userModel } from "../models/users.Model.js";
+import mongoose from "mongoose";
+import userModel from "../models/users.Model.js";
 import bcrypt from "bcrypt";
 
-class UserManagerDB {
+export default class UserManagerDB {
+    constructor(){
+        this.userModel = mongoose.model(userModel.userCollection, userModel.userSchema);
+    }
     newUser = async ({ first_name, last_name, email, age, password }) => {
         try {
             const regex =
@@ -24,7 +28,7 @@ class UserManagerDB {
                         " " +
                         password,
                 );
-            const found = await userModel
+            const found = await this.userModel
                 .findOne({ email: email })
                 .lean()
                 .exec();
@@ -44,7 +48,7 @@ class UserManagerDB {
                     age,
                     password: hashpass,
                 };
-                const newUser = new userModel(user);
+                const newUser = new this.userModel(user);
                 newUser.save();
                 return newUser;
             }
@@ -54,7 +58,8 @@ class UserManagerDB {
     };
     loginUser = async ({ email, password }) => {
         try {
-            const found = await userModel
+            console.log(email, password)
+            const found = await this.userModel
                 .findOne({ email: email })
                 .lean()
                 .exec();
@@ -79,4 +84,4 @@ class UserManagerDB {
     };
 }
 
-export { UserManagerDB };
+// export { UserManagerDB };

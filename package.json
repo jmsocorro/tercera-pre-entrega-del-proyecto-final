@@ -1,5 +1,5 @@
 {
-  "name": "reestructura_de_nuestro_servidor",
+  "name": "tercera-pre-entrega-del-proyecto-final",
   "version": "1.0.0",
   "description": "",
   "main": "./src/app.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmsocorro/reestructura_de_nuestro_servidor.git"
+    "url": "git+https://github.com/jmsocorro/tercera-pre-entrega-del-proyecto-final.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jmsocorro/reestructura_de_nuestro_servidor.git"
+    "url": "https://github.com/jmsocorro/tercera-pre-entrega-del-proyecto-final.git"
   },
-  "homepage": "https://github.com/jmsocorro/reestructura_de_nuestro_servidorgit#readme",
+  "homepage": "https://github.com/jmsocorro/tercera-pre-entrega-del-proyecto-final.git#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-mongo": "^5.0.0",

@@ -218,6 +218,8 @@ export default class CartManagerDB {
             let totalpurchase = 0;
             cartfound.products.forEach((product, index) => {
                 if (product.quantity <= product.product.stock) {
+                    product.product.stock =
+                    product.product.stock - product.quantity;
                     purchaseproducts.push(product);
                     totalpurchase += product.product.price * product.quantity;
                 } else {
@@ -281,7 +283,12 @@ Fecha: $ ${newticket.purchase_datetime}
                     from: config.TWILIO_PH,
                     to: "+ 54 1121743449",
                 });
-                
+                purchaseproducts.forEach((product, index) => {
+                    const updatedProduct = productModelCart.updateOne(
+                        { _id: product.product._id },
+                        { $set: { stock: product.product.stock } }
+                    );
+                });
             }
 
             return {

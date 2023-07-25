@@ -226,6 +226,7 @@ export default class CartManagerDB {
                 }
             });
             if (purchaseproducts.length > 0) {
+                // Creo el ticket
                 const ticket = {
                     code: user.email + "|" + cid,
                     amount: totalpurchase,
@@ -234,11 +235,12 @@ export default class CartManagerDB {
                 };
                 const newticket = new ticketModelCart(ticket);
                 newticket.save();
-                console.log(newticket);
+                // Guardo el carro actualizado
                 const updatedCart = await this.cartModel.updateOne(
                     { _id: cid },
                     { $set: { products: outofstock } }
                 );
+                // Envio el ticket por mail
                 const transport = nodemailer.createTransport({
                     service: "gmail",
                     port: 587,
@@ -264,6 +266,7 @@ export default class CartManagerDB {
                     `,
                     attachments: [],
                 });
+                // Envio el ticket por sms
                 const client = twilio(config.TWILIO_SID, config.TWILIO_AT);
                 const smsresult = await client.messages.create({
                     body: `
@@ -278,6 +281,7 @@ Fecha: $ ${newticket.purchase_datetime}
                     from: config.TWILIO_PH,
                     to: "+ 54 1121743449",
                 });
+                
             }
 
             return {
